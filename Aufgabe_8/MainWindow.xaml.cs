@@ -64,7 +64,7 @@ namespace Aufgabe_8
             }
             else
             {
-                letterGuessed = Convert.ToChar(txtGuess.Text.Length);
+                letterGuessed = Convert.ToChar(txtGuess.Text);
                 Process(letterGuessed);
             }
         }
@@ -72,7 +72,7 @@ namespace Aufgabe_8
         {
             string stars = "";
             char[] charWord = new char[word.Length];
-            char eingabe;
+            //char eingabe;
             string starsReplaced;
             int AmountOfGuesses = 0;
 
@@ -80,44 +80,22 @@ namespace Aufgabe_8
             {
                 charWord[i] = word[i];
             }
-
-            foreach (char c in charWord)
-            {
-                Console.Write(c + " | ");
-            }
-            Console.WriteLine();
             for (int i = 0; i < word.Length; i++)
             {
                 stars += "*";
             }
-            //while (true)
-            //{
-            //    Console.WriteLine();
-            //    Console.WriteLine("Give character: (0 for exit)");
-            //    eingabe = Convert.ToChar(Console.ReadLine().ToUpper());
-            //    AmountOfGuesses++;
-            //    if (eingabe == '0')
-            //        break;
-            Console.WriteLine("stars:");
-            foreach (char c in stars)
-            {
-                Console.Write(c + " | ");
-            }
             starsReplaced = ReplaceByLetterFound1(letterGuessed, stars, charWord);
-            Console.WriteLine();
-            Console.WriteLine("stars after replacement:");
-            foreach (char c in starsReplaced)
-            {
-                Console.Write(c + " | ");
-            }
-            Console.WriteLine();
+            txtWordDisplay.Text = "";
+            MessageBox.Show("Zurück: ", starsReplaced);
+            txtWordDisplay.Text = starsReplaced;
+
             if (AllStarsReplacedByLetters(starsReplaced))
             {
-                Console.WriteLine("Congratulations! You did it in {0} guesses", AmountOfGuesses);
+                lblFinished.Content = "Congratulations! You did it in " + AmountOfGuesses + " guesses";
             }
             // Replace star sequence by newly formed sequence:
             stars = starsReplaced;
-            //}
+            
             static string ReplaceByLetterFound1(char letter, string stars, char[] word)
             {
                 StringBuilder sb = new StringBuilder(stars);
@@ -129,8 +107,10 @@ namespace Aufgabe_8
                         sb[i] = letter;
                     }
                 }
+                MessageBox.Show(sb.ToString());
                 return sb.ToString();
             }
+            
             static Boolean AllStarsReplacedByLetters(string stars)
             {
                 StringBuilder sb = new StringBuilder(stars);

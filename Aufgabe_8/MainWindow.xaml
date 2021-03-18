@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="400">
   <Grid>
-    <TextBox x:Name="txtWordDisplay" HorizontalAlignment="Left" Margin="45,44,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    <TextBox x:Name="txtWordDisplay" HorizontalAlignment="Left" Margin="45,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     <Button x:Name="btnNewWord" Content="Create new" HorizontalAlignment="Left" Margin="200,42,0,0" VerticalAlignment="Top" Click="btnNewWord_Click"/>
     <TextBox x:Name="txtGuess" HorizontalAlignment="Left" Margin="136,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29"/>
     <Button x:Name="btnGuess" Content="Guess character" HorizontalAlignment="Left" Margin="200,92,0,0" VerticalAlignment="Top" Click="btnGuess_Click"/>
+    <Label x:Name="lblFinished" Content="" HorizontalAlignment="Left" Margin="200,134,0,0" VerticalAlignment="Top" Width="170"/>
 
   </Grid>
 </Window>
