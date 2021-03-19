@@ -33,13 +33,19 @@ namespace Aufgabe_8
         //List<int> charPositionList = new List<int>();
         Random random = new Random();
         int randomNumber;
-        string word;
+        string word = "";
         string stars = "";
         static int AmountOfGuesses = 0;
+        StringBuilder sb;
 
         public MainWindow()
         {
             InitializeComponent();
+            lbLIntroduction.Content = "Press 'Create new' and a word is there for you \nto be guessed letter by letter.";
+        }
+
+        private void btnNewWord_Click(object sender, RoutedEventArgs e)
+        {
             randomNumber = random.Next(1, 11);
             // Pick word randomly:
             word = wordList[randomNumber];
@@ -49,11 +55,7 @@ namespace Aufgabe_8
                 stars += "*";
             }
             txtWordDisplay.Text = "";
-        }
-
-        private void btnNewWord_Click(object sender, RoutedEventArgs e)
-        {
-            StringBuilder sb = new StringBuilder("", word.Length);
+            sb = new StringBuilder("", word.Length);
             for (int i = 0; i < word.Length; i++)
             {
                 sb.Append("*");
@@ -64,7 +66,11 @@ namespace Aufgabe_8
         private void btnGuess_Click(object sender, RoutedEventArgs e)
         {
             char letterGuessed;
-            if (txtGuess.Text.Length == 0)
+            if (word == "")
+            {
+                MessageBox.Show("First press 'Create new', please.");
+            }
+            else if (txtGuess.Text.Length == 0)
             {
                 MessageBox.Show("You did not give a character");
             }
@@ -99,6 +105,8 @@ namespace Aufgabe_8
                     lblFinished.Content = "Congratulations! You did it in " + AmountOfGuesses + " guesses";
                     stars = "";
                     word = "";
+                    txtWordDisplay.Text = "";
+                    sb.Clear();
                 }
                 // Replace star sequence by newly formed sequence:
                 stars = starsReplaced;
