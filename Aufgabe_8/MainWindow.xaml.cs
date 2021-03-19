@@ -34,10 +34,17 @@ namespace Aufgabe_8
         //char[] charArray = new char[];
         //int randomNumber;
         string word = "KANDIDAT";
+        string stars = "";
+
         public MainWindow()
         {
             InitializeComponent();
             //word = wordList[randomNumber];
+            for (int i = 0; i < word.Length; i++)
+            {
+                stars += "*";
+            }
+            txtWordDisplay.Text = "";
         }
 
         private void btnNewWord_Click(object sender, RoutedEventArgs e)
@@ -70,7 +77,6 @@ namespace Aufgabe_8
         }
         private void Process(char letterGuessed)
         {
-            string stars = "";
             char[] charWord = new char[word.Length];
             //char eingabe;
             string starsReplaced;
@@ -80,13 +86,8 @@ namespace Aufgabe_8
             {
                 charWord[i] = word[i];
             }
-            for (int i = 0; i < word.Length; i++)
-            {
-                stars += "*";
-            }
-            starsReplaced = ReplaceByLetterFound1(letterGuessed, stars, charWord);
-            txtWordDisplay.Text = "";
-            MessageBox.Show("Zurück: ", starsReplaced);
+
+            starsReplaced = ReplaceByLetterFound(letterGuessed, stars, charWord);
             txtWordDisplay.Text = starsReplaced;
 
             if (AllStarsReplacedByLetters(starsReplaced))
@@ -95,35 +96,34 @@ namespace Aufgabe_8
             }
             // Replace star sequence by newly formed sequence:
             stars = starsReplaced;
-            
-            static string ReplaceByLetterFound1(char letter, string stars, char[] word)
+        }
+
+        static string ReplaceByLetterFound(char letter, string stars, char[] word)
+        {
+            StringBuilder sb = new StringBuilder(stars);
+            for (int i = 0; i < word.Length; i++)
             {
-                StringBuilder sb = new StringBuilder(stars);
-                for (int i = 0; i < word.Length; i++)
+                // If 
+                if (word[i] == letter)
                 {
-                    // If 
-                    if (word[i] == letter)
-                    {
-                        sb[i] = letter;
-                    }
+                    sb[i] = letter;
                 }
-                MessageBox.Show(sb.ToString());
-                return sb.ToString();
             }
-            
-            static Boolean AllStarsReplacedByLetters(string stars)
+            return sb.ToString();
+        }
+
+        static Boolean AllStarsReplacedByLetters(string stars)
+        {
+            StringBuilder sb = new StringBuilder(stars);
+            for (int i = 0; i < stars.Length; i++)
             {
-                StringBuilder sb = new StringBuilder(stars);
-                for (int i = 0; i < stars.Length; i++)
+                // If 
+                if (stars[i] == '*')
                 {
-                    // If 
-                    if (stars[i] == '*')
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                return true;
             }
+            return true;
         }
     }
 }
