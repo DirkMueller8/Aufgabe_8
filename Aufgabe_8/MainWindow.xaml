@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aufgabe_8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="Hangman" Height="209" Width="339">
   <Grid>
-    <TextBox x:Name="txtWordDisplay" HorizontalAlignment="Left" Margin="45,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-    <Button x:Name="btnNewWord" Content="Create new" HorizontalAlignment="Left" Margin="200,42,0,0" VerticalAlignment="Top" Click="btnNewWord_Click"/>
-    <TextBox x:Name="txtGuess" HorizontalAlignment="Left" Margin="136,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29"/>
-    <Button x:Name="btnGuess" Content="Guess character" HorizontalAlignment="Left" Margin="200,92,0,0" VerticalAlignment="Top" Click="btnGuess_Click"/>
-    <Label x:Name="lblFinished" Content="" HorizontalAlignment="Left" Margin="200,134,0,0" VerticalAlignment="Top" Width="170"/>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="35*"/>
+      <ColumnDefinition Width="78*"/>
+    </Grid.ColumnDefinitions>
+    <TextBox x:Name="txtWordDisplay" HorizontalAlignment="Left" Margin="45,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+    <Button x:Name="btnNewWord" Content="Create new" HorizontalAlignment="Left" Margin="95,42,0,0" VerticalAlignment="Top" Click="btnNewWord_Click" Grid.Column="1"/>
+    <TextBox x:Name="txtGuess" HorizontalAlignment="Left" Margin="31,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Grid.Column="1"/>
+    <Button x:Name="btnGuess" Content="Guess character" HorizontalAlignment="Left" Margin="95,76,0,0" VerticalAlignment="Top" Click="btnGuess_Click" Grid.Column="1"/>
+    <Label x:Name="lblFinished" Content="" HorizontalAlignment="Left" Margin="45,119,0,0" VerticalAlignment="Top" Width="265" Grid.ColumnSpan="2"/>
 
   </Grid>
 </Window>

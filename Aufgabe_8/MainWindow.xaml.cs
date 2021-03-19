@@ -29,17 +29,18 @@ namespace Aufgabe_8
     {
         List<string> wordList = new List<string>
         { "Wetter", "Milch", "Datum", "Pflanze", "Ampel", "Telefon", "Toast", "Abitur", "Kante", "Wippe"};
-        //List<int> charPositionList = new List<int>;
+        List<int> charPositionList = new List<int>();
         Random random = new Random();
         //char[] charArray = new char[];
-        //int randomNumber;
-        string word = "KANDIDAT";
+        int randomNumber;
+        string word;
         string stars = "";
 
         public MainWindow()
         {
             InitializeComponent();
-            //word = wordList[randomNumber];
+            word = wordList[randomNumber];
+            lblFinished.Content = word; ;
             for (int i = 0; i < word.Length; i++)
             {
                 stars += "*";
@@ -49,7 +50,7 @@ namespace Aufgabe_8
 
         private void btnNewWord_Click(object sender, RoutedEventArgs e)
         {
-            //randomNumber = random.Next(1, 11);
+            randomNumber = random.Next(1, 11);
             StringBuilder sb = new StringBuilder("", word.Length);
             for (int i = 0; i < word.Length; i++)
             {
@@ -93,6 +94,8 @@ namespace Aufgabe_8
             if (AllStarsReplacedByLetters(starsReplaced))
             {
                 lblFinished.Content = "Congratulations! You did it in " + AmountOfGuesses + " guesses";
+                stars = "";
+                word = "";
             }
             // Replace star sequence by newly formed sequence:
             stars = starsReplaced;
